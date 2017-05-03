@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  php:
+    build: ./.docker/php
+    links:
+      - mysql
+    ports:
+      - 8001:80
+      - 8181:443
+      - 9000:9000
+    volumes:
+      - ./src:/var/www/html
+
+  mysql:
+    build: ./.docker/mysql
+    environment:
+      - MYSQL_DATABASE=database
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=secret
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3307:3306
+    volumes:
+      - .mysql:/var/lib/mysql
