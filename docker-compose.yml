@@ -7,8 +7,6 @@ services:
       - mysql
     ports:
       - 8001:80
-      - 8181:443
-      - 9000:9000
     volumes:
       - ./src:/var/www/html
 
