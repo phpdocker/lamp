@@ -5,8 +5,8 @@ This is a very simple Docker bootstrap for your PHP application.
 It includes:
 
 * Apache 2.4
-* PHP 7.1
-* MariaDB 10.0
+* PHP 7.2
+* MariaDB 10.2
 
 ## Basic usage
 
@@ -25,7 +25,7 @@ It builds (for the first time) and launches Docker container on background.
 ### Stop
 
 ```bash
-docker-compose down
+docker-compose stop
 ```
 
 ## Webserver
@@ -35,7 +35,7 @@ Everything you put inside `src` directory will be exposed via built-in webserver
 Just open your browser at:
 
 ```
-http://localhost:8001/
+http://localhost:8080/
 ```
 
 You will see `phpinfo()` HTML output.
