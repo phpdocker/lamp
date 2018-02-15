@@ -62,10 +62,6 @@ password: root
 database: database
 ```
 
-## Customization
-
-TODO
-
 ## IDE (PHP interpreter, debugging, tests)
 
 Since XDebug is disabled for performance reasons, you have to enable
@@ -78,7 +74,3 @@ Additionally you can pass more configuration parameters like
 This is useful in tests or in your IDE.
 
 ![i](https://i.imgur.com/yCaRZHs.png)
-
-## Troubleshooting
-
-TODO
