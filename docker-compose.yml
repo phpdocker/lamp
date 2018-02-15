@@ -13,7 +13,7 @@ services:
 
   mysql:
     container_name: 'lamp-mariadb'
-    build: ./.docker/mysql
+    build: ./docker/mysql
     environment:
       - MYSQL_DATABASE=database
       - MYSQL_USER=user
@@ -23,4 +23,4 @@ services:
       - 127.0.0.1:3307:3306
     volumes:
       - /var/lib/mysql
-      - ./.sql:/docker-entrypoint-initdb.d:rw
+      - ./sql:/docker-entrypoint-initdb.d:rw
