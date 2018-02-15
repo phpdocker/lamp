@@ -68,7 +68,16 @@ TODO
 
 ## IDE (PHP interpreter, debugging, tests)
 
-TODO
+Since XDebug is disabled for performance reasons, you have to enable
+it when you want to debug your code.
+
+Just run PHP interpreter with `-dzend_extension=xdebug.so` command.
+Additionally you can pass more configuration parameters like
+`-dxdebug.remote_enable=1 -dxdebug.remote_mode=req -dxdebug.remote_port=9000 -dxdebug.remote_host=172.17.0.1`
+
+This is useful in tests or in your IDE.
+
+![i](https://i.imgur.com/yCaRZHs.png)
 
 ## Troubleshooting
 
