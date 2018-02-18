@@ -8,37 +8,26 @@ It includes:
 * PHP 7.2
 * MariaDB 10.2
 
-## Basic usage
+## Usage
 
 You should read [official Docker documentation](https://docs.docker.com/) first.
 
-### Install, Run
+Inspect `docker` directory where you can find services configuration.
 
-Just clone this repository and run:
+If you need to initialize database with specified scheme and content,
+put your SQL files inside `docker/mysql/sql` directory.
 
-```bash
-docker-compose up -d
-```
-
-It builds (for the first time) and launches Docker container on background.
-
-### Stop
-
-```bash
-docker-compose stop
-```
+Run services by command `docker-compose up -d`.
 
 ## Webserver
 
-Everything you put inside `src` directory will be exposed via built-in webserver.
+Everything you put inside `public` directory will be exposed via built-in webserver.
 
-Just open your browser at:
+Open your browser at:
 
 ```
 http://localhost:8080/
 ```
-
-You will see `phpinfo()` HTML output.
 
 ## Database
 
@@ -46,19 +35,19 @@ You can connect to database from your localhost:
 
 ```
 host: localhost
-port: 3307
+port: 6446
 user: root
 password: root
 database: database
 ```
 
-Or from PHP file (inside `src` directory):
+Or from PHP files:
 
 ```
 host: mysql
 port: 3306
-user: root
-password: root
+user: user
+password: secret
 database: database
 ```
 
