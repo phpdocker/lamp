@@ -2,7 +2,7 @@ version: '2'
 
 services:
   apache:
-    container_name: 'apache'
+    container_name: 'lamp-apache'
     build: ./docker/apache
     image: lamp/apache
     ports:
@@ -11,7 +11,7 @@ services:
       - ./:/var/www/html
 
   php:
-    container_name: 'php'
+    container_name: 'lamp-php'
     build: ./docker/php
     image: lamp/php
     links:
@@ -20,7 +20,7 @@ services:
       - ./:/var/www/html
 
   mysql:
-    container_name: 'mariadb'
+    container_name: 'lamp-mariadb'
     build: ./docker/mysql
     image: mariadb:10.2
     environment:

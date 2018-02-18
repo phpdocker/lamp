@@ -10,44 +10,26 @@ It includes:
 
 ## Intention
 
-Provide a convenient way to start and develop new Linux+Apache+PHP+MySQL
-applications inside Docker.
+Provide a convenient way to start and develop
+Linux+Apache+PHP+MySQL applications inside Docker.
 
 ## Usage
 
 Download contents of this repository as a ZIP file and extract.
 
-You should read [official Docker documentation](https://docs.docker.com/) first.
-
-Inspect `docker` directory where you can find all the configuration.
+Modify contents of `docker-compose.yml`, at least
+**rename container names to have unique ones for your project**.
 
 If you need to initialize database with specified scheme and content,
 put your SQL files inside `docker/mysql/sql` directory.
 
 Build and run containers with command `docker-compose up -d`.
 
-# Symfony skeleton in Docker
+## Recommendations
 
-You can easily create a Symfony application in Docker.
+Read [official Docker documentation](https://docs.docker.com/) first.
 
-```
-# Remove current directories
-rm -rf public/{.,}*
-
-# Install skeleton
-docker exec -t -u me php composer create-project symfony/skeleton app
-
-# Move to root
-mv app/{.,}* .
-rmdir app   
-```
-
-If you need to access Docker PHP itself, just login into container
-console as a non-root user:
-
-```
-docker exec -it -u me php bash
-```
+Inspect `docker` directory where you can find all the configuration.
 
 ## Webserver
 
@@ -93,3 +75,28 @@ Additionally you can pass more configuration parameters like
 This is useful in tests or in your IDE.
 
 ![i](https://i.imgur.com/yCaRZHs.png)
+
+## Symfony skeleton in Docker
+
+You can easily create a Symfony application in Docker.
+
+```
+# Remove current directories
+rm -rf public/{.,}*
+
+# Install skeleton
+docker exec -t -u me lamp-php composer create-project symfony/skeleton app
+
+# Move to root
+mv app/{.,}* .
+rmdir app   
+```
+
+If you need to access Docker PHP itself, just login into container
+console as a non-root user:
+
+```
+docker exec -it -u me lamp-php bash
+```
+
+*Note:* Don't forget to replace `lamp-php` by real name of your container!
