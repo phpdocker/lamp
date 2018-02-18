@@ -3,7 +3,7 @@ version: '2'
 services:
   php:
     container_name: 'lamp-php-apache'
-    build: ./.docker/php
+    build: ./docker/php
     links:
       - mysql
     ports:
