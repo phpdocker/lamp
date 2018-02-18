@@ -15,6 +15,8 @@ applications inside Docker.
 
 ## Usage
 
+Download contents of this repository as a ZIP file and extract.
+
 You should read [official Docker documentation](https://docs.docker.com/) first.
 
 Inspect `docker` directory where you can find all the configuration.
@@ -24,15 +26,20 @@ put your SQL files inside `docker/mysql/sql` directory.
 
 Build and run containers with command `docker-compose up -d`.
 
-# Initialize Symfony skeleton
+# Symfony skeleton in Docker
 
 You can easily create a Symfony application in Docker.
 
 ```
-# Remove current web content
-rm -rf app/{.,}*
-# Install composer
-docker exec -t -u me php composer create-project symfony/skeleton .
+# Remove current directories
+rm -rf public/{.,}*
+
+# Install skeleton
+docker exec -t -u me php composer create-project symfony/skeleton app
+
+# Move to root
+mv app/{.,}* .
+rmdir app   
 ```
 
 If you need to access Docker PHP itself, just login into container
