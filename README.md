@@ -12,18 +12,18 @@ It includes:
 
 You should read [official Docker documentation](https://docs.docker.com/) first.
 
-Inspect `docker` directory where you can find services configuration.
+Inspect `docker` directory where you can find all configuration.
 
 If you need to initialize database with specified scheme and content,
 put your SQL files inside `docker/mysql/sql` directory.
 
-Run services by command `docker-compose up -d`.
+Build and run containers with command `docker-compose up -d`.
 
 ## Webserver
 
-Everything you put inside `public` directory will be exposed via built-in webserver.
+Everything you put inside `app` directory will be seen by Apache and PHP.
 
-Open your browser at:
+Data inside `app/public` will be handled by webserver and reached at:
 
 ```
 http://localhost:8080/
@@ -31,7 +31,7 @@ http://localhost:8080/
 
 ## Database
 
-You can connect to database from your localhost:
+Connect as a root from your host:
 
 ```
 host: localhost
@@ -41,7 +41,7 @@ password: root
 database: database
 ```
 
-Or from PHP files:
+Or from PHP scripts:
 
 ```
 host: mysql
