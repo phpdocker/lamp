@@ -4,11 +4,24 @@ MAINTAINER me@hranicka.cz
 
 RUN apt-get update && apt-get upgrade -y
 
-RUN apt-get update \
-  && apt-get install -y wget libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
-  && docker-php-ext-install -j$(nproc) pdo pdo_mysql zip mbstring gd iconv
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        wget \
+    && docker-php-ext-install -j$(nproc) \
+        pdo \
+        pdo_mysql \
+        zip \
+        mbstring \
+        iconv \
+        gd
 
-RUN pecl install xdebug-2.6.0
+RUN pecl install \
+        xdebug-2.6.0 \
+        apcu-5.1.10 \
+    && docker-php-ext-enable \
+        apcu
 
 COPY ./php.ini /usr/local/etc/php/
 
