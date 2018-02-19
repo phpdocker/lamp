@@ -10,12 +10,13 @@ RUN apt-get update && apt-get install -y \
         libpng-dev \
         wget \
     && docker-php-ext-install -j$(nproc) \
+        opcache \
         pdo \
         pdo_mysql \
-        zip \
         mbstring \
         iconv \
-        gd
+        gd \
+        zip
 
 RUN pecl install \
         xdebug-2.6.0 \
