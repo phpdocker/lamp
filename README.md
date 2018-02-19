@@ -33,9 +33,7 @@ Inspect `docker` directory where you can find all the configuration.
 
 ## Webserver
 
-Everything you put inside `app` directory will be seen by Apache and PHP.
-
-Data inside `app/public` will be handled by webserver and reached at:
+Content of `public` will be handled by webserver and reached at:
 
 ```
 http://localhost:8080/
@@ -81,22 +79,25 @@ This is useful in tests or in your IDE.
 You can easily create a Symfony application in Docker.
 
 ```
+# Login into Docker PHP terminal as a non-root user
+docker exec -it -u me lamp-php bash
+```
+
+Inside container's terminal run:
+
+```
 # Remove current directories
 rm -rf public/{.,}*
 
 # Install skeleton
-docker exec -t -u me lamp-php composer create-project symfony/skeleton app
+composer create-project symfony/skeleton project
 
-# Move to root
-mv app/{.,}* .
-rmdir app   
-```
+# Move skeleton to the root
+mv project/{.,}* .
+rmdir project   
 
-If you need to access Docker PHP itself, just login into container
-console as a non-root user:
-
-```
-docker exec -it -u me lamp-php bash
+# Install Apache pack (.htaccess)
+composer require symfony/apache-pack
 ```
 
 *Note:* Don't forget to replace `lamp-php` by real name of your container!
