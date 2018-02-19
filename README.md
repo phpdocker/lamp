@@ -83,6 +83,9 @@ You can easily create a Symfony application in Docker.
 docker exec -it -u me lamp-php bash
 ```
 
+*Note: Don't forget to replace `lamp-php` by real name of your container!*
+
+
 Inside container's terminal run:
 
 ```bash
@@ -96,8 +99,9 @@ composer create-project symfony/skeleton project
 mv project/{.,}* .
 rmdir project   
 
-# Install Apache pack (.htaccess)
+# Install bundles
 composer require symfony/apache-pack
+composer require annotations
+composer require profiler
+composer require twig
 ```
-
-*Note:* Don't forget to replace `lamp-php` by real name of your container!
