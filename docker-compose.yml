@@ -22,7 +22,7 @@ services:
   mysql:
     container_name: 'lamp-mariadb'
     build: ./docker/mysql
-    image: mariadb:10.2
+    image: lamp/mysql
     environment:
       - MYSQL_DATABASE=database
       - MYSQL_USER=user
