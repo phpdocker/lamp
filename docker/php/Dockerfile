@@ -4,21 +4,52 @@ MAINTAINER me@hranicka.cz
 
 RUN apt-get update && apt-get upgrade -y
 
+# Basic
 RUN apt-get update && apt-get install -y \
-        libfreetype6-dev \
-        libjpeg62-turbo-dev \
-        libpng-dev \
         wget \
+        gnupg2 \
+        git \
     && docker-php-ext-install -j$(nproc) \
         opcache \
         pdo \
         pdo_mysql \
         mbstring \
         iconv \
-        zip \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
-    && docker-php-ext-install -j$(nproc) gd
+        bcmath
 
+# ZIP
+RUN apt-get update && apt-get install -y \
+        zlib1g-dev \
+    && docker-php-ext-install -j$(nproc) \
+        zip
+
+# Gd2
+RUN apt-get update && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) \
+        gd \
+        exif
+
+# Intl
+RUN apt-get update && apt-get install -y \
+        libicu-dev \
+        g++ \
+    && docker-php-ext-install -j$(nproc) \
+        intl
+
+# XML
+RUN apt-get update && apt-get install -y \
+        libxml2-dev \
+        libxslt-dev \
+	&& docker-php-ext-install -j$(nproc) \
+		dom \
+		xmlrpc \
+		xsl
+
+# PECL extensions
 RUN pecl install \
         xdebug-2.6.0 \
         apcu-5.1.10 \
@@ -27,7 +58,7 @@ RUN pecl install \
 
 COPY ./php.ini /usr/local/etc/php/
 
-# Install Composer
+# Composer
 COPY ./install-composer.sh /usr/local/bin/
 RUN install-composer.sh && mv composer.phar /usr/local/bin/composer
 
