@@ -2,27 +2,21 @@ version: '2'
 
 services:
   apache:
-    container_name: 'lamp-apache'
     build: ./docker/apache
-    image: lamp/apache
     ports:
       - 127.0.0.1:8080:80
     volumes:
       - ./:/var/www/html
 
   php:
-    container_name: 'lamp-php'
     build: ./docker/php
-    image: lamp/php
     links:
       - mysql
     volumes:
       - ./:/var/www/html
 
   mysql:
-    container_name: 'lamp-mariadb'
     build: ./docker/mysql
-    image: lamp/mysql
     environment:
       - MYSQL_DATABASE=database
       - MYSQL_USER=user
