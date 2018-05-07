@@ -17,9 +17,6 @@ Linux+Apache+PHP+MySQL applications inside Docker.
 
 Download contents of this repository as a ZIP file and extract.
 
-Modify contents of `docker-compose.yml`, at least
-**rename container names to have unique ones for your project**.
-
 If you need to initialize database with specified scheme and content,
 put your SQL files inside `docker/mysql/sql` directory.
 
