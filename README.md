@@ -99,6 +99,6 @@ rmdir project
 # Install bundles
 composer require symfony/apache-pack
 composer require annotations
-composer require profiler
 composer require twig
+composer require profiler --dev
 ```
