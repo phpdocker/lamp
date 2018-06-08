@@ -58,10 +58,10 @@ RUN pecl install \
 
 COPY ./php.ini /usr/local/etc/php/
 
+# Create a non-root user to be able to create non-root files in mounted volumes
+RUN groupadd --gid 1000 php \
+    && useradd --uid 1000 --gid php --shell /bin/bash --create-home php
+
 # Composer
 COPY ./install-composer.sh /usr/local/bin/
 RUN install-composer.sh && mv composer.phar /usr/local/bin/composer
-
-# Create a non-root user to be able to create non-root files in mounted volumes
-RUN useradd me
-RUN cp -ra /root/ /home/me/ && chown -R me:me /home/me/

@@ -77,7 +77,7 @@ You can easily create a Symfony application in Docker.
 
 ```bash
 # Login into Docker PHP terminal as a non-root user
-docker exec -it -u me $(basename `pwd`)_php_1 bash
+docker exec -it -u 1000 $(basename `pwd`)_php_1 bash
 ```
 
 Inside container's terminal run:
