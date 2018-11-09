@@ -76,8 +76,8 @@ This is useful in tests or in your IDE.
 You can easily create a Symfony application in Docker.
 
 ```bash
-# Login into Docker PHP terminal as a non-root user
-docker exec -it $(basename `pwd`)_php_1 bash
+# Login into Docker PHP terminal
+docker-compose exec php bash
 ```
 
 Inside container's terminal run:
